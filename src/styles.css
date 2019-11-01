@@ -1,0 +1,355 @@
+* {
+  font-family: "ZCOOL XiaoWei", serif;
+}
+
+.contenedor {
+  background: #f0a0d4;
+  display: grid;
+  grid-template-columns: 1fr 3fr 1fr;
+  justify-items: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 10px;
+}
+.MisCanciones {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+}
+.cancionesDescargadas {
+  background: #f0a0d4;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  display: grid;
+  grid-template-areas: 1fr 1fr;
+}
+h2 {
+  color: white;
+}
+.tituloListaCanciones {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+.listadoDeCanciones {
+  background: white;
+  margin-top: 20px;
+  margin-left: 0;
+  border-radius: 10px;
+}
+.buscadorListaCanciones {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.buscador {
+  display: flex;
+  border: 1px solid white;
+  border-radius: 10px;
+  height: 20px;
+  width: 60%;
+  background-color: transparent;
+  outline: none;
+}
+.cancion {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 20px;
+  color: violet;
+}
+.Reproductor {
+  background: white;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+  display: grid;
+  grid-template-rows: 3fr 1fr;
+  justify-items: center;
+  align-items: center;
+  border: solid #f0a0d4;
+}
+
+.fotoPerfil {
+  border-radius: 50%;
+  margin: 10px;
+}
+
+audio:hover,
+audio:focus,
+audio:active {
+  -webkit-box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: 15px 15px 20px rgba(0, 0, 0, 0.4);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  transform: scale(1.05);
+}
+audio {
+  -webkit-transition: all 0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  -moz-box-shadow: 2px 2px 4px 0px #f123a9;
+  -webkit-box-shadow: 2px 2px 4px 0px #f123a9;
+  box-shadow: 2px 2px 4px 0px #f123a9;
+  -moz-border-radius: 7px 7px 7px 7px;
+  -webkit-border-radius: 7px 7px 7px 7px;
+  border-radius: 7px 7px 7px 7px;
+  background: white;
+}
+
+.botonDescargar {
+  background: none;
+  margin: 5px;
+  border-radius: 5px;
+  border: solid 1px white;
+  color: white;
+}
+.botonDescargar:hover {
+  background: #f123a9;
+}
+.encabezadoLista {
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+}
+.iconos {
+  display: flex;
+  justify-content: flex-end;
+  justify-content: space-evenly;
+}
+.perfil {
+  display: flex;
+  align-items: center;
+}
+
+.informacionPerfil {
+  padding: 10px;
+  background: #f0a0d4;
+  font-family: "ZCOOL XiaoWei", serif;
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+  text-align: center;
+  border-radius: 20px;
+}
+.tituloInformacion {
+  color: white;
+  font-size: 20px;
+}
+.infousuario {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+.inputs {
+  background: none;
+  display: grid;
+  gap: 10px;
+  text-align: left;
+}
+.inputPerfil {
+  border-radius: 25px;
+  background: none;
+  border: solid 2px white;
+}
+.info {
+  display: grid;
+  gap: 20px;
+  text-align: right;
+}
+.botones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+button {
+  background: none;
+  border: solid 1px white;
+  border-radius: 5px;
+}
+button:hover {
+  background: #f123a9;
+}
+
+.contenedorCrear {
+  background: #f0a0d4;
+  margin: 20px;
+  padding: 20px;
+  border-radius: 20px;
+}
+.nombreCancion {
+  background: transparent;
+  border: solid 2px white;
+  border-radius: 20px;
+  margin: 10px;
+  outline: none;
+  height: 20px;
+  width: 80%;
+  padding-left: 10px;
+  scroll-padding-right: 10px;
+}
+.genero {
+  background: transparent;
+  border: solid 2px white;
+  border-radius: 20px;
+  margin: 10px;
+  outline: none;
+  color: white;
+  height: 20px;
+  width: 80%;
+}
+.artista {
+  background: transparent;
+  border: solid 2px white;
+  border-radius: 20px;
+  margin: 10px;
+  outline: none;
+  color: white;
+  height: 20px;
+  width: 80%;
+  padding-left: 10px;
+  scroll-padding-right: 10px;
+}
+.informacionCancion {
+  display: flex;
+  flex-direction: column;
+}
+
+.datosDeIngreso {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.archivo {
+  background: none;
+}
+.INICIARSESION {
+  margin: 10px;
+  padding: 10px;
+  background: white;
+  border: solid 1px #f123a9;
+  border-radius: 10px;
+  text-align: center;
+  width: 50%;
+}
+
+.tituloIniciar {
+  padding: 10px;
+  margin: 10px;
+}
+.inputIniciar {
+  padding-left: 10px;
+  border-radius: 10px;
+  background: none;
+  color: black;
+  margin: 10px;
+  border: solid 2px #f123a9;
+}
+.botonIniciar {
+  background: none;
+  border: solid 1px #f123a9;
+  border-radius: 5px;
+}
+:-ms-input-placeholder {
+  color: black;
+}
+.botonIniciar ::placeholder {
+  color: black;
+}
+.botonIniciar:hover {
+  background: #f123a9;
+}
+.informacionRegistro {
+  margin: 10px;
+  padding: 10px;
+  background: white;
+  border: solid 1px #f123a9;
+  border-radius: 10px;
+  text-align: center;
+  width: 50%;
+}
+
+.inputRegistro {
+  padding-left: 10px;
+  border-radius: 10px;
+  background: none;
+  color: black;
+  margin: 10px;
+  border: solid 2px #f123a9;
+}
+.botonRegistro {
+  background: none;
+  border: solid 1px #f123a9;
+  border-radius: 5px;
+}
+
+.botonRegistro:hover {
+  background: #f123a9;
+}
+.eliminarEditar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.contenedorListadoUsuarios {
+  background-color: #f0a0d4;
+  padding: 20px;
+  margin: 30px;
+  border-radius: 20px;
+}
+.buscadorListaUsuarios {
+  display: flex;
+  justify-content: center;
+  height: 30px;
+  padding-bottom: 10px;
+}
+.buscadorUsuario {
+  border: 1px white solid;
+  border-radius: 10px;
+  background-color: transparent;
+  width: 60%;
+}
+.usuario {
+  display: flex;
+  background: white;
+  padding: 20px;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.tituloListaUsuarios {
+  text-align: center;
+}
+
+.listaUsuarios {
+  background: white;
+  margin-top: 20px;
+  margin-left: 0;
+  border-radius: 10px;
+}
+
+@media all and (min-width: 600px) {
+  .cancionesDescargadas,
+  .Reproductor {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
+  }
+}
+
+@media all and(max-width: 300px) {
+  .cancionesDescargadas {
+    flex-wrap: nowrap;
+  }
+}
+
+@media all and (max-width: 300px) {
+  .cancionesDescargadas {
+    grid-template-areas:
+      "div div div"
+      "div div div";
+  }
+}
