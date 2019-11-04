@@ -16,6 +16,7 @@ import { CuentaAdministradorComponent } from './cuenta-administrador/cuenta-admi
 import { ReactiveFormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
+import { ConsultarCancionesComponent } from './consultar-canciones/consultar-canciones.component';
 
 const routes: Routes = [
   {
@@ -41,7 +42,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, CrearCancionComponent, ErrorComponent,ListaReproduccionComponent, DescargaComponent, InfoPerfilComponent, ActualizarCancionComponent, FormRegistroComponent, FormLoginComponent, CuentaAdministradorComponent],
+  declarations: [AppComponent, HomeComponent, CrearCancionComponent, ErrorComponent,ListaReproduccionComponent, DescargaComponent, InfoPerfilComponent, ActualizarCancionComponent, FormRegistroComponent, FormLoginComponent, CuentaAdministradorComponent, ConsultarCancionesComponent],
   imports: [BrowserModule, RouterModule.forRoot(routes), ReactiveFormsModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent]
