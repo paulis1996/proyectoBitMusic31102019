@@ -3,15 +3,81 @@
 const express = require("express");
 const router = express.Router();
 const Canciones = require("../models/modeloCancion");
+const multer = require('multer');
+
+
+// Multer File upload settings
+const DIR = 'public/';
+
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, DIR);
+  },
+  filename: (req, file, cb) => {
+    const fileName = file.originalname.toLowerCase().split(' ').join('-');
+    cb(null, fileName)
+  }
+});
+
+
+// Multer Mime Type Validation
+var upload = multer({
+  storage: storage,
+  limits: {
+    fileSize: 1024 * 1024 * 5
+  },
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype == "audio/mp3" || file.mimetype.indexOf("audio/")!=-1) {
+      cb(null, true);
+    } else {
+      cb(null, false);
+      return cb(new Error('Only audio format allowed!'));
+    }
+  }
+});
+
+
+
 
 // POST
-router.post("/canciones", (req, res, next) => {
-  Canciones
-    .create(req.body)
+router.post("/canciones", upload.single('archivo'), (req, res, next) => {
+  
+  console.log("entro..crear"+req.body.archivo);
+
+  const url = req.protocol + '://' + req.get('host')
+  const cancion = new Canciones({
+    //_id: new mongoose.Types.ObjectId(),
+    titulo: req.body.name,
+    duracion:  req.body.name,
+    genero:  req.body.name,
+    artista:  req.body.name,
+    archivo: url + '/public/' + req.file.filename
+  });
+
+  cancion.save().then(result => {
+    console.log(result);
+    res.status(201).json({
+      message: "Cancion registered successfully!",
+      cancionCreated: {
+        _id: result._id,
+        titulo: result.titulo,
+        duracion: result.duracion,
+        genero: result.genero,
+        artista: result.artista,
+        archivo: result.archivo
+      }
+    })
+  }).catch(err => {
+    console.log(err),
+      res.status(500).json({
+        error: err
+      });
+  })
+  /*Canciones.create(req.body)
     .then(Canciones => {
       res.send(Canciones);
     })
-    .catch(next);
+    .catch(next);*/
 });
 
 // DELETE

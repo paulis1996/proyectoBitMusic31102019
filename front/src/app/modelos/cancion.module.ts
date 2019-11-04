@@ -4,5 +4,5 @@ export interface Cancion{
     duracion?: string,
     genero?: string,
     artista?: string,
-    archivo?: string
+    archivo?: FileReader
  }

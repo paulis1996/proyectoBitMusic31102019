@@ -1,8 +1,8 @@
 "use strict";
 const express = require("express");
+const cors = require("cors");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-//const cors = require("cors");
 
 const cancionesRoutes = require("./routes/rutaCancion");
 const usuariosRoutes = require("./routes/rutaUsuario");
@@ -29,15 +29,25 @@ mongoose
   });
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded());
 
-//app.use(cors({ origen: "http://localhost:4200" }));
-/* app.use((req, res, next) => {
+app.use(cors());
+//app.options('*', cors())
+
+// Make "public" Folder Publicly Available
+app.use('/public', express.static('public'));
+
+
+
+
+app.use(cors({ origen: "http://localhost:4200" }));
+/*app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   res.header('Access-Control-Allow-Headers', 'Authorization, X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Allow-Request-Method');
   res.header('Access-Control-Allow-Methods', 'GET, PUT, POST, DELETE, OPTIONS');
   res.header('Allow', 'GET, PUT, POST, DELETE, OPTIONS');
   next();
-}) */
+})*/ 
 
 
 const apiGroupRoutes = [cancionesRoutes, usuariosRoutes, loginRoutes];
