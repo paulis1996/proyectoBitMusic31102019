@@ -47,11 +47,12 @@ router.post("/canciones", upload.single('archivo'), (req, res, next) => {
   const url = req.protocol + '://' + req.get('host')
   const cancion = new Canciones({
     //_id: new mongoose.Types.ObjectId(),
-    titulo: req.body.name,
-    duracion:  req.body.name,
-    genero:  req.body.name,
-    artista:  req.body.name,
+    titulo: req.body.titulo,
+    duracion:  req.body.duracion,
+    genero:  req.body.genero,
+    artista:  req.body.artista,
     archivo: url + '/public/' + req.file.filename
+    
   });
 
   cancion.save().then(result => {
