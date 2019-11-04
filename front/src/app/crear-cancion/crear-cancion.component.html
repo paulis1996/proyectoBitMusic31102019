@@ -9,14 +9,25 @@
      <form [formGroup]="cancionForm" (ngSubmit)="enviar()" >
     <label>Título:</label>
     <input formControlName="titulo" type="text" />
-    <label for="">Duración:</label>
-    <input formControlName="duracion" type="Number" />
-    <label for="">Género:</label>
-    <input formControlName="genero" type="text" />
-    <label for="">Artista: </label>
-    <input formControlName="artista" type="text" />
-    <label for="">Archivo: </label>
-    <input type="file" accept=".mp3,audio/*" (change)="onSelectFile($event)" #fileInput> 
+    <label for="duracion">Duración:</label>
+    <input formControlName="duracion" type="Number" name="duracion" id="duracion"/>
+    <label for="genero">Género:</label>
+    <select name="genero" id="genero" formControlName="genero">
+        <option value="Salsa">Salsa</option>
+        <option value="Rock">Rock</option>
+        <option value="Pop">Pop</option>
+        <option value="Vallenato">Vallenato</option>
+        <option value="Electronica">Electronica</option>
+        <option value="Gospel">Gospel</option>
+        <option value="Metal">Metal</option>
+        <option value="Ranchera">Ranchera</option>
+        <option value="Rap">Rap</option>
+        <option value="Merengue">Merengue</option>
+    </select>
+    <label for="artista">Artista: </label>
+    <input formControlName="artista" type="text" name="artista" id="artista"/>
+    <label for="archivo">Archivo: </label>
+    <input type="file" accept=".mp3,audio/*" (change)="onSelectFile($event)" name="archivo" id="archivo" #fileInput> 
     <button [disabled]="!cancionForm.valid" type="submit">Registrar</button>
    </form>  
    
