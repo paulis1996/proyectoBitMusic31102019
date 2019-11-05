@@ -1,16 +1,53 @@
-<link href="https://fonts.googleapis.com/css?family=Great+Vibes|ZCOOL+XiaoWei&display=swap" rel="stylesheet">
-<div class="informacionRegistro">
-    <div class="tituloRegistro"> <b>REGISTRO</b> </div>
+<link
+  href="https://fonts.googleapis.com/css?family=Great+Vibes|ZCOOL+XiaoWei&display=swap"
+  rel="stylesheet"
+/>
+<form [formGroup]="registroForm" (ngSubmit)="enviar(registroForm.value)">
+  <div class="informacionRegistro">
+    <div class="tituloRegistro"><b>REGISTRO</b></div>
     <div>
-        <div><input class="inputRegistro" type="text" placeholder="NOMBRE"></div>
-        <div><input class="inputRegistro" type="text" placeholder="EDAD"></div>
-        <div><input class="inputRegistro" type="text" placeholder="CORREO"></div>
-        <div><input class="inputRegistro" type="text" placeholder="CONTRASEÑA"></div>
-
+      <div>
+        <input
+          formControlName="nombre"
+          class="inputRegistro"
+          type="text"
+          placeholder="NOMBRE"
+        />
+      </div>
+      <div>
+        <input
+          formControlName="edad"
+          class="inputRegistro"
+          type="text"
+          placeholder="EDAD"
+        />
+      </div>
+      <div>
+        <input
+          formControlName="correo"
+          class="inputRegistro"
+          type="text"
+          placeholder="CORREO"
+        />
+      </div>
+      <div>
+        <input
+          formControlName="password"
+          class="inputRegistro"
+          type="password"
+          placeholder="CONTRASEÑA"
+        />
+      </div>
     </div>
 
     <div>
-        <button class="botonRegistro">REGISTRARSE</button>
+      <button
+        [disabled]="registroForm.invalid"
+        class="botonRegistro"
+        type="submit"
+      >
+        REGISTRARSE
+      </button>
     </div>
-
-</div>
+  </div>
+</form>
