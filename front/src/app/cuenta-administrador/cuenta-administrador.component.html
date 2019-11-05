@@ -1,34 +1,22 @@
-<link href="https://fonts.googleapis.com/css?family=Great+Vibes|ZCOOL+XiaoWei&display=swap" rel="stylesheet">
 <div class="contenedorListadoUsuarios">
-    <div class="tituloListaUsuarios">
-
-        <h2>Lista De Usuarios</h2>
-
+  <div class="tituloListaUsuarios">
+    <h2>Lista De Usuarios</h2>
+  </div>
+  <div class="buscadorListaUsuarios">
+    <input class="buscadorUsuario" type="text" placeholder="Buscar usuario" [(ngModel)]="textoBuscado" (ngModelChange)="buscar()" >
+  </div>
+  <div class="listaUsuarios">
+    <div class="usuario" *ngFor="let usuario of listadoUsuarios">
+      <img width="30px" height="30px" src="../../assets/images/user.png" alt="">
+      <h3>{{usuario.nombre}}</h3>
+      <h6>{{usuario.correo}}</h6>
+      <div class="editores">
+        <a *ngIf="usuarioActual._id !== usuario._id" (click)="eliminarUsuario(usuario._id)"><img src="../../assets/images/eliminar.png" alt=""></a>
+        <a routerLink="/info-perfil/{{usuario._id}}"><img src="../../assets/images/icons8-editar-archivo-26.png" alt=""></a>
+      </div>
     </div>
-    <div class="buscadorListaUsuarios">
-        <input class="buscadorUsuario" type="text">
-    </div>
-    <div class="listaUsuarios">
-        <div class="usuario">
-            <img width="30px" height="30px" src="../../assets/images/user.png" alt="">
-            <h3>Nombre</h3>
-            <h6>Correo</h6>
-            <div class="editores">
-                <img src="../../assets/images/eliminar.png" alt="">
-                <img src="../../assets/images/icons8-editar-archivo-26.png" alt="">
-            </div>
-        </div>
-        <div class="usuario">
-            <img width="30px" height="30px" src="../../assets/images/user.png" alt="">
-            <h3>Nombre</h3>
-            <h6>Correo</h6>
-            <div class="editores">
-                <img src="../../assets/images/eliminar.png" alt="">
-                <img src="../../assets/images/icons8-editar-archivo-26.png" alt="">
-            </div>
-        </div>
-    </div>
-</div>
-<div class="crearCancion">
-    <img src="" alt="">
+  </div>
+  <div>
+    <button routerLink="/descarga">Volver</button>
+  </div>
 </div>
