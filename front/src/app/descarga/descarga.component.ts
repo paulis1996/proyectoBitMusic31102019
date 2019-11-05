@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { LoginService } from "../login.service";
+import { Router } from "@angular/router";
+import { Usuario } from '../modelos/usuario.module';
 
 @Component({
   selector: "descarga",
@@ -6,7 +9,21 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./descarga.component.css"]
 })
 export class DescargaComponent implements OnInit {
-  constructor() {}
+  constructor(private _loginService: LoginService, private router: Router) {}
 
-  ngOnInit() {}
+  activo = false;
+  usuarioActual: Usuario;
+
+  ngOnInit() {
+    this.usuarioActual = this._loginService.obtenerUsuario();
+  }
+
+  cerrarSesion() {
+    this._loginService.logout();
+    this.router.navigate(["/"]);
+  }
+
+  get() {
+    this.activo = !this.activo;
+  }
 }
