@@ -19,6 +19,9 @@ import { ErrorComponent } from './error/error.component';
 import { ConsultarCancionesComponent } from './consultar-canciones/consultar-canciones.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AdminGuard } from './guards/admin.guard';
+import { ItemCancionComponent } from './item-cancion/item-cancion.component';
+import { CommonModule } from '@angular/common';
+
 
 import {
   MatInputModule,
@@ -91,7 +94,7 @@ const routes: Routes = [
         ListaReproduccionComponent, DescargaComponent, InfoPerfilComponent, ActualizarCancionComponent, 
         FormRegistroComponent,
         FormLoginComponent, CuentaAdministradorComponent, ConsultarCancionesComponent, 
-        ConfirmacionDialogComponent],
+        ConfirmacionDialogComponent, ItemCancionComponent],
   imports: [BrowserModule, RouterModule.forRoot(routes), ReactiveFormsModule, HttpClientModule, 
         BrowserAnimationsModule,CustomMaterialModule, NotificacionModule,
         MatInputModule,
@@ -102,7 +105,8 @@ const routes: Routes = [
         MatIconModule,
         MatButtonModule,MatMenuModule,
         MatCardModule,ScrollingModule,
-        MatFormFieldModule],
+        MatFormFieldModule,
+    CommonModule],
   providers: [CanActivateViaAuthGuard, AdminGuard],
   entryComponents: [ConfirmacionDialogComponent],
   bootstrap: [AppComponent],
