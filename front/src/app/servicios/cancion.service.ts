@@ -52,13 +52,14 @@ readonly Url_API = 'http://localhost:3000/api/canciones'
 
   updateCancion(_id:String, cancion:Cancion): Observable<Cancion> {
     var formData: any = new FormData();
+    const url = this.Url_API+"/"+_id;
     formData.append("_id", _id);
     formData.append("titulo", cancion.titulo);
     formData.append("duracion", cancion.duracion);
     formData.append("genero", cancion.genero);
     formData.append("artista", cancion.artista);
     formData.append("archivo", cancion.archivo);
-    return this.http.put<Cancion>(this.Url_API, formData, this.httpOptions);
+    return this.http.put<Cancion>(url, formData, this.httpOptions);
   }
   deleteCancion(id: any): Observable<Cancion> {
     const url = this.Url_API+"/"+id;

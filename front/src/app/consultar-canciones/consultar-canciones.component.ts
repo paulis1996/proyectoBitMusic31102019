@@ -4,7 +4,7 @@ import { CancionService } from '../servicios/cancion.service';
 import { Cancion } from "../modelos/cancion.module";
 import { ConfirmacionDialogComponent, ConfirmacionDialogModel } from '../confirmacion-dialog/confirmacion-dialog.component';
 import { MatDialog } from '@angular/material';
-
+import { NotificacionService } from '../servicios/notificacion.service';
 
 @Component({
   selector: 'app-consultar-canciones',
@@ -18,10 +18,8 @@ export class ConsultarCancionesComponent implements OnInit {
   isLoadingResults = true;
   cancionSeleccionada :Cancion;
 
-  mensaje : string="";
-
   constructor(private router: Router, private _cancionservice: CancionService,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog, private notificacionService: NotificacionService) { }
 
   ngOnInit() {
     this._cancionservice.getCanciones()
@@ -33,6 +31,7 @@ export class ConsultarCancionesComponent implements OnInit {
         console.log(err);
         this.isLoadingResults = false;
       });
+      
   }
 
   deleteCancion(cancion: Cancion) {
@@ -55,13 +54,13 @@ export class ConsultarCancionesComponent implements OnInit {
           .subscribe(res => {
               this.isLoadingResults = false;
               this.ngOnInit();
-              this.mensaje="Se eliminó la canción correctamente";
+              this.notificacionService.success("Se eliminó la canción correctamente!");
             }, (err) => {
               console.log(err);
               this.isLoadingResults = false;
             }
           );
       }
-    });  
+    }); 
   }
 }

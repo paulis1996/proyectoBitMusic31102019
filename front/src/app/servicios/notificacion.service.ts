@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 import { filter } from 'rxjs/operators';
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class NotificacionService {
 
     private subject = new Subject<Notificacion>();

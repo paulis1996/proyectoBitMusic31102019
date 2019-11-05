@@ -6,11 +6,13 @@
     </div>
     <div class="tituloListaCanciones">
         <img src="../../assets/images/flecha-izq.png" alt="">
-        <h2>Crear Nueva Canción</h2>
+        <h2>Actualizar Canción</h2>
         <img src="../../assets/images/guardar.png" width="30px" height="30px" alt="">
     </div>
 
     <form [formGroup]="cancionForm" (ngSubmit)="onFormSubmit()">
+        <label for="titulo">ID:</label>
+        <input disabled type="text"  formControlName="_id"/>
         <label for="titulo">Título:</label>
         <input formControlName="titulo" type="text" />
         <label for="duracion">Duración:</label>

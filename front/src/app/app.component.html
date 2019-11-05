@@ -10,6 +10,8 @@
 <!-- <login></login>
 <form-registro></form-registro>
 <cuenta-administrador></cuenta-administrador> -->
+    
+
 <div>
     <ul>
         <li routerLinkActive="red">
@@ -23,7 +25,10 @@
         </li>
     </ul>
 
-
+<div class="container text-center">
+    <notificacion></notificacion>
+  
+</div>
 <button mat-button [matMenuTriggerFor]="animals">Animal index</button>
 
 <mat-menu #animals="matMenu">
@@ -74,5 +79,5 @@
 </mat-menu>
 </div>
 
-<notificacion></notificacion>
+
 <router-outlet></router-outlet>

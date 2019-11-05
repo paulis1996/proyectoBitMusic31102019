@@ -4,7 +4,7 @@ import { NotificacionService } from '../servicios/notificacion.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-notificacion',
+  selector: 'notificacion',
   templateUrl: './notificacion.component.html',
   styleUrls: ['./notificacion.component.css']
 })

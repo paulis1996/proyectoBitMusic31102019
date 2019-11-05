@@ -2,7 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CancionService } from '../servicios/cancion.service';
-
+import { NotificacionService } from '../servicios/notificacion.service';
 
 @Component({
   selector: "crear-cancion",
@@ -12,7 +12,7 @@ import { CancionService } from '../servicios/cancion.service';
 export class CrearCancionComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private builder: FormBuilder, 
-    private _cancionservice: CancionService ) { } //notacion para servicios
+    private _cancionservice: CancionService, private notificacionService: NotificacionService ) { } //notacion para servicios
   
   isLoadingResults = false;
   cancionForm: FormGroup = this.builder.group({
@@ -30,8 +30,12 @@ export class CrearCancionComponent implements OnInit {
       const id = response._id;
         this.isLoadingResults = false;
         this.router.navigate(['/ConsultarCanciones']);
-        alert ('Se creó la canción correctamente') // En angular material ya hay mensajes prestablecidos 
-    })
+        this.notificacionService.success("Canción registrada satisfactoriamente!");
+    }), (err: any) => {
+      console.log(err);
+      this.notificacionService.error("Error al registrar la canción");
+      this.isLoadingResults = false;
+    }
   }
   onSelectFile(event){
     const file = (event.target as HTMLInputElement).files[0];
