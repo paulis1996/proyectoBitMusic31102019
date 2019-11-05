@@ -9,10 +9,12 @@
       <img src="" alt=""/>
     </div>
     <div class="buscadorListaCanciones">
-      <input type="search" class="buscador" placeholder="Que quieres agregar" size="100%"/>
+      <input  class="buscador" [formControl]="busqueda" placeholder="Que quieres agregar" size="100%">
       <button class="botonDescargar">AGREGAR</button>
     </div>
-    <div class="listadoDeCanciones"></div>
+    <div class="listadoDeCanciones">
+    <app-item-cancion *ngFor="let c of cancionesFiltradas" [cancion]='c' (addCancion)='handlerAddCancion($event)'></app-item-cancion>
+    </div>
   </div>
   <div class="perfil">
     <div><img class="fotoPerfil" src="../../assets/images/woman-1149911__340.jpg" width="110PX" height="110px"></div>
