@@ -1,1 +1,46 @@
-<p>consultar-canciones works!</p>
+
+<div class="contenedorCrear"> 
+    <div class="tituloListaCanciones">
+        <img src="../../assets/images/flecha-izq.png" alt="">
+        <h2>Lista de Canciones</h2>
+        <a routerLink="/CrearCancion"><img src="../../assets/images/icons8-agregar-archivo-26.png" width="30px" height="30px"/></a>
+    </div>
+    <div class="loading-shade"
+            *ngIf="isLoadingResults">
+        <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+    </div>
+    
+    <div class="MisCanciones">
+        <div class="listadoDeCanciones" >
+            <p>{{mensaje}}</p>
+                <cdk-virtual-scroll-viewport itemSize="50"  style="height: 300px">
+                    <div class="cancion" *cdkVirtualFor="let cancion of data">
+                    
+                            <img src="../../assets/images/onda-lista.png" alt="ID: {{cancion._id}}"/>
+                            <h3>{{cancion.titulo}}</h3>
+                            <h3>{{cancion.artista}}</h3>
+                            <h3>{{cancion.genero}}</h3>
+                            <h3>{{cancion.duracion}}</h3>
+                            <h3>{{cancion.titulo}}</h3>
+                            <div class="eliminarEditar">
+                                <button mat-button (click)="this.deleteCancion(cancion)">
+                                        <img src="../../assets/images/eliminar.png" alt=""/>
+                                </button>
+                                <a [routerLink]="['/ActualizarCancion/', cancion._id]">
+                                    <img src="../../assets/images/icons8-editar-archivo-26.png" width="30px" height="25px"/>
+                                </a>
+                            </div>
+                    </div>
+                         
+                </cdk-virtual-scroll-viewport>
+        </div>
+        <div class="Reproductor">
+            <img class="imagenReproductor" src="../../assets/images/night-3084237__340.jpg" width="100%" height="100%"/>
+            <div class="lineaReproductor">
+                <audio controls="controls" preload="metadata">
+                    <source src="{{cancionSeleccionada?cancionSeleccionada.archivo:''}}" type="audio/mp3"/>
+                </audio>
+            </div>
+        </div>
+    </div>
+</div>

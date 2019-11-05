@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CancionService } from '../servicios/cancion.service';
 
@@ -10,9 +11,10 @@ import { CancionService } from '../servicios/cancion.service';
 })
 export class CrearCancionComponent implements OnInit {
 
-  constructor(private builder: FormBuilder, 
+  constructor(private router: Router, private route: ActivatedRoute, private builder: FormBuilder, 
     private _cancionservice: CancionService ) { } //notacion para servicios
-
+  
+  isLoadingResults = false;
   cancionForm: FormGroup = this.builder.group({
     titulo: ['', Validators.required],
     duracion: ['', Validators.compose([Validators.required, Validators.minLength(1)])],
@@ -22,9 +24,13 @@ export class CrearCancionComponent implements OnInit {
   })
   ngOnInit() {}
   enviar() {
+    this.isLoadingResults = true;
     console.log(this.cancionForm.value);
     this._cancionservice.postCancion(this.cancionForm.value).subscribe(response=>{
-      alert ('Se creó la canción correctamente') // En angular material ya hay mensajes prestablecidos 
+      const id = response._id;
+        this.isLoadingResults = false;
+        this.router.navigate(['/ConsultarCanciones']);
+        alert ('Se creó la canción correctamente') // En angular material ya hay mensajes prestablecidos 
     })
   }
   onSelectFile(event){

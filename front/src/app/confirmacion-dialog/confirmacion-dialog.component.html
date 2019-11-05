@@ -1,0 +1,16 @@
+  
+<div class="contenedorDialog">
+  <h1 mat-dialog-title>
+    {{title}}
+  </h1>
+   
+  <div mat-dialog-content>
+    <p>{{message}}</p>
+    <p *ngFor="let item of datos;">{{item}}</p>
+  </div>
+   
+  <div mat-dialog-actions class="dialogContent">
+    <button mat-button (click)="cancelar()">No</button>
+    <button mat-raised-button (click)="confirmar()">Si</button>
+  </div>
+</div>

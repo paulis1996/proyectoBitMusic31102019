@@ -1,38 +1,101 @@
- <link href="https://fonts.googleapis.com/css?family=Great+Vibes|ZCOOL+XiaoWei&display=swap" rel="stylesheet">
-<div class="contenedorCrear"> 
+<link href="https://fonts.googleapis.com/css?family=Great+Vibes|ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+<div class="contenedorCrear">
     <div class="tituloListaCanciones">
         <img src="../../assets/images/flecha-izq.png" alt="">
         <h2>Crear Nueva Canción</h2>
         <img src="../../assets/images/guardar.png" width="30px" height="30px" alt="">
     </div>
-  
-     <form [formGroup]="cancionForm" (ngSubmit)="enviar()" >
-    <label>Título:</label>
-    <input formControlName="titulo" type="text" />
-    <label for="duracion">Duración:</label>
-    <input formControlName="duracion" type="Number" name="duracion" id="duracion"/>
-    <label for="genero">Género:</label>
-    <select name="genero" id="genero" formControlName="genero">
-        <option value="Salsa">Salsa</option>
-        <option value="Rock">Rock</option>
-        <option value="Pop">Pop</option>
-        <option value="Vallenato">Vallenato</option>
-        <option value="Electronica">Electronica</option>
-        <option value="Gospel">Gospel</option>
-        <option value="Metal">Metal</option>
-        <option value="Ranchera">Ranchera</option>
-        <option value="Rap">Rap</option>
-        <option value="Merengue">Merengue</option>
-    </select>
-    <label for="artista">Artista: </label>
-    <input formControlName="artista" type="text" name="artista" id="artista"/>
-    <label for="archivo">Archivo: </label>
-    <input type="file" accept=".mp3,audio/*" (change)="onSelectFile($event)" name="archivo" id="archivo" #fileInput> 
-    <button [disabled]="!cancionForm.valid" type="submit">Registrar</button>
-   </form>  
-   
+
+    <form [formGroup]="cancionForm" (ngSubmit)="enviar()">
+        <label for="titulo">Título:</label>
+        <input formControlName="titulo" type="text" />
+        <label for="duracion">Duración:</label>
+        <input formControlName="duracion" type="Number" name="duracion" id="duracion" />
+        <label for="genero">Género:</label>
+        <select name="genero" id="genero" formControlName="genero">
+            <option value="Salsa">Salsa</option>
+            <option value="Rock">Rock</option>
+            <option value="Pop">Pop</option>
+            <option value="Vallenato">Vallenato</option>
+            <option value="Electronica">Electronica</option>
+            <option value="Gospel">Gospel</option>
+            <option value="Metal">Metal</option>
+            <option value="Ranchera">Ranchera</option>
+            <option value="Rap">Rap</option>
+            <option value="Merengue">Merengue</option>
+        </select>
+        <label for="artista">Artista: </label>
+        <input formControlName="artista" type="text" name="artista" id="artista" />
+        <label for="archivo">Archivo: </label>
+        <input type="file" accept=".mp3,audio/*" (change)="onSelectFile($event)" name="archivo" id="archivo" #fileInput>
+        <button [disabled]="!cancionForm.valid" type="submit">Registrar</button>
+    </form>
+</div>
 <!-- </div> -->
-   <!-- 
+
+
+
+
+<!-- 
+
+
+
+<link href="https://fonts.googleapis.com/css?family=Great+Vibes|ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+<div class="contenedorCrear">
+    <div class="tituloListaCanciones">
+        <img src="../../assets/images/flecha-izq.png" alt="">
+        <h2>Crear Nueva Canción</h2>
+        <img src="../../assets/images/guardar.png" width="30px" height="30px" alt="">
+    </div>
+    <div class="container">
+
+        <div class="starter-template">
+            <form [formGroup]="cancionForm" (ngSubmit)="enviar()">
+                <div class="col-md-4 mb-3">
+                    <label>Título:</label>
+                    <input class="form-control" formControlName="titulo" type="text" />
+                </div>
+                <div class="form-group">
+                    <label for="duracion">Duración:</label>
+                    <input class="form-control" formControlName="duracion" type="Number" name="duracion"
+                        id="duracion" />
+                </div>
+                <div class="form-group">
+                    <label for="genero">Género:</label>
+                    <select name="genero" id="genero" formControlName="genero">
+                        <option value="Salsa">Salsa</option>
+                        <option value="Rock">Rock</option>
+                        <option value="Pop">Pop</option>
+                        <option value="Vallenato">Vallenato</option>
+                        <option value="Electronica">Electronica</option>
+                        <option value="Gospel">Gospel</option>
+                        <option value="Metal">Metal</option>
+                        <option value="Ranchera">Ranchera</option>
+                        <option value="Rap">Rap</option>
+                        <option value="Merengue">Merengue</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="artista">Artista: </label>
+                    <input class="form-control" formControlName="artista" type="text" name="artista" id="artista" />
+                </div>
+                <div class="form-group">
+                    <label for="archivo">Archivo: </label>
+                    <input class="form-control" type="file" accept=".mp3,audio/*" (change)="onSelectFile($event)"
+                        name="archivo" id="archivo" #fileInput>
+                </div>
+                <div class="form-group">
+                    <button [disabled]="!cancionForm.valid" type="submit">Registrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
 <div class="contenedorCrear"> 
     <div class="tituloListaCanciones">
         <img src="../../assets/images/flecha-izq.png" alt="">

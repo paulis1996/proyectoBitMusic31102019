@@ -290,8 +290,9 @@ button:hover {
   background: #f123a9;
 }
 .eliminarEditar {
-  display: flex;
+  /* display: flex;*/
   justify-content: space-between;
+  vertical-align: center;
 }
 
 .contenedorListadoUsuarios {
@@ -353,3 +354,21 @@ button:hover {
       "div div div";
   }
 }
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

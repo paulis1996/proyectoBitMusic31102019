@@ -109,7 +109,7 @@ module.exports = router;
 
 //PUT
 router.put('/canciones/:id', (req, res, next) => {
-  console.log("entro..");
+  console.log("entro..put");
   Canciones.findByIdAndUpdate({ _id: req.params.id }, req.body)
       .then(()=>{
           Canciones.findOne({_id: req.params.id})

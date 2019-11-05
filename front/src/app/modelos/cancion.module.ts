@@ -1,5 +1,5 @@
 export interface Cancion{
-    id?: string,
+    _id?: string,
     titulo?:string,
     duracion?: string,
     genero?: string,
