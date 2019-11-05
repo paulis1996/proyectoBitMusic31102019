@@ -1,28 +1,105 @@
-<link href="https://fonts.googleapis.com/css?family=Great+Vibes|ZCOOL+XiaoWei&display=swap" rel="stylesheet">
 <div class="contenedor">
-    <div>
-        <img src="../../assets/images/logo_BitMusic.png" alt="">
+  <div>
+    <img src="../../assets/images/logo_BitMusic.png" alt=""/>
+  </div>
+  <div>
+    <div class="tituloListaCanciones">
+      <img src="" alt=""/>
+      <h2>Busca Tu Canción</h2>
+      <img src="" alt=""/>
     </div>
-    <div>
+    <div class="buscadorListaCanciones">
+      <input  class="buscador" [formControl]="busqueda" placeholder="Que quieres agregar" size="100%">
+      <button class="botonDescargar">AGREGAR</button>
+    </div>
+    <div class="listadoDeCanciones">
+    <app-item-cancion *ngFor="let c of cancionesFiltradas" [cancion]='c' (addCancion)='handlerAddCancion($event)'></app-item-cancion>
+    </div>
+  </div>
+  <div class="perfil">
+    <div><img class="fotoPerfil" src="../../assets/images/woman-1149911__340.jpg" width="110PX" height="110px"></div>
+    <div class="menu">
+      <button class="botonPerfil" (click)="get()">
+        <img src="../../assets/images/icons8-menú-redondeado-30.png" alt="">
+      </button>
+      <div *ngIf="activo">
+        <p><a routerLink="/info-perfil">Editar Perfil</a></p>
+        <p *ngIf="usuarioActual.role === 'Admin'"><a routerLink="/cuenta-administrador">Administración</a></p>
+        <p><a (click)="cerrarSesion()">Cerrar Sesión</a></p>
+      </div>
+    </div>
+    <!-- <img class="fotoPerfil" src="../../assets/images/woman-1149911__340.jpg" width="110PX" height="110px"/> <img src="../../assets/images/icons8-menú-redondeado-30.png" width="30px" height="30px"/> <nav class="lista-menu"> <ul> <li> <a href="">Información</a> </li> <li> <a routerlink="/cuenta-administrador" href="">Administración</a> <ul> <li> <a href="">Administrar Usuarios</a> </li> <li> <a href="">Submenu2</a> </li> <li> <a href="">Submenu3</a> </li> </ul> </li> <li (click)="cerrarSesion()"> Cerrar Sesión </li> </ul> </nav> -->
+  </div>
+</div>
+
+<div>
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes|ZCOOL+XiaoWei&display=swap" rel="stylesheet"/>
+  <div class="MisCanciones">
+    <div class="cancionesDescargadas">
+      <div class="encabezadoLista">
         <div class="tituloListaCanciones">
-            <img src="" alt="">
-            <h2>Busca Tu Cancion</h2>
-            <img src="" alt="">
+          <h2>Mi Lista De Canciones</h2>
         </div>
-        <div class="buscadorListaCanciones">
-            <input type="search" class="buscador" placeholder="Que quieres descargar" size="100%">
-            <button class="botonDescargar">DESCARGAR</button>
+        <div class="iconos">
+          <a routerlink="/crear-cancion"><img src="../../assets/images/icons8-agregar-archivo-26.png" width="30px" height="30px"/></a>
         </div>
-        <div class="listadoDeCanciones">
-
+      </div>
+      <div class="buscadorListaCanciones">
+        <input type="search" class="buscador" placeholder="Que quieres escuchar"/>
+      </div>
+      <div class="listadoDeCanciones">
+        <div class="cancion">
+          <img src="../../assets/images/onda-lista.png" alt=""/>
+          <h3>In The End</h3>
+          <h6>Linking Park</h6>
+          <div class="eliminarEditar">
+            <img src="../../assets/images/eliminar.png" alt=""/>
+            <a routerlink="/editar-cancion">
+              <img src="../../assets/images/icons8-editar-archivo-26.png" width="30px" height="25px"/></a>
+          </div>
         </div>
+        <div class="cancion">
+          <img src="../../assets/images/onda-lista.png" alt=""/>
+          <h3>In The End</h3>
+          <h6>Linking Park</h6>
+          <div class="eliminarEditar">
+            <img src="../../assets/images/eliminar.png" alt=""/>
+            <a routerlink="/editar-cancion">
+              <img src="../../assets/images/icons8-editar-archivo-26.png" width="30px" height="25px"/></a>
+          </div>
+        </div>
+      </div>
+      <div class="crearCancion">
+        <img src="" alt=""/>
+      </div>
     </div>
-    <div class="perfil"><img class="fotoPerfil" src="../../assets/images/woman-1149911__340.jpg" width="110PX"
-            height="110px">
-
-        <img src="../../assets/images/icons8-menú-redondeado-30.png" width="30px" height="30px">
+    <div class="Reproductor">
+      <img class="imagenReproductor" src="../../assets/images/night-3084237__340.jpg" width="100%" height="100%"/>
+      <div class="lineaReproductor">
+        <audio controls="controls" preload="metadata">
+          <source src="https://www.w3schools.com/html/horse.ogg" type="audio/ogg"/>
+        </audio>
+      </div>
     </div>
+  </div>
+</div>
 
 
-
+<div class="footer">
+    <div class="bit">
+            <div>Desarrollado por TECHNOGIRLS</div>
+            <div>BIT - Bogotá Institute of Technology</div>
+    </div>
+ 
+ <div class="redes">
+   <a href="https://www.facebook.com/" target="_blank">
+     <img src="../../assets/images/icons8-facebook-48.png" width="40px" height="40px"/>
+   </a>
+   <a href="https://www.twitter.com/" target="_blank">
+     <img src="../../assets/images/icons8-twitter-48.png" width="40px" height="40px" />
+   </a>
+   <a href="https://www.instagram.com/" target="_blank">
+     <img src="../../assets/images/icons8-instagram-48.png" width="40px" height="40px"/>
+   </a>
+ </div>
 </div>
