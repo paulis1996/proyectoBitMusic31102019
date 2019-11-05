@@ -12,7 +12,6 @@ export class ActualizarCancionComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute, private builder: FormBuilder,
     private _cancionservice: CancionService) { } //notacion para servicios
 
-
   _id = '';
   isLoadingResults = false;
   cancionForm: FormGroup = this.builder.group({
@@ -25,30 +24,23 @@ export class ActualizarCancionComponent implements OnInit {
 
   ngOnInit() {
     this.getCancion(this.route.snapshot.params.id);
-    this.cancionForm = this.builder.group({
+    /*this.cancionForm = this.builder.group({
       titulo: ['', Validators.required],
       duracion: ['', Validators.compose([Validators.required, Validators.minLength(1)])],
       genero: ['', Validators.required],
       artista: ['', Validators.required], //Para añadir varios validators
       archivo: [null, Validators.required]
-    });
+    });*/
   }
-  enviar() {
-    console.log(this.cancionForm.value);
-    this._cancionservice.postCancion(this.cancionForm.value).subscribe(response => {
-      alert('Se creó la canción correctamente') // En angular material ya hay mensajes prestablecidos 
-    })
-  }
+
   onSelectFile(event) {
     const file = (event.target as HTMLInputElement).files[0];
     this.cancionForm.patchValue({
       archivo: file
     });
     this.cancionForm.get('archivo').updateValueAndValidity()
-
   }
   
-
   getCancion(id: any) {
     console.log("this.cancionForm.value"+id);
     this._cancionservice.getCancion(id).subscribe((data: any) => {

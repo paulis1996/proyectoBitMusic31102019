@@ -4,7 +4,7 @@ import { CancionService } from '../servicios/cancion.service';
 import { Cancion } from "../modelos/cancion.module";
 import { ConfirmacionDialogComponent, ConfirmacionDialogModel } from '../confirmacion-dialog/confirmacion-dialog.component';
 import { MatDialog } from '@angular/material';
-import { NotificacionesBusService} from '../servicios/notificacion.service'
+
 
 @Component({
   selector: 'app-consultar-canciones',
@@ -21,7 +21,7 @@ export class ConsultarCancionesComponent implements OnInit {
   mensaje : string="";
 
   constructor(private router: Router, private _cancionservice: CancionService,
-    public dialog: MatDialog/*, private notificacionesBus: NotificacionesBusService*/) { }
+    public dialog: MatDialog) { }
 
   ngOnInit() {
     this._cancionservice.getCanciones()

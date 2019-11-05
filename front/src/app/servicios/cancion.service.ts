@@ -45,8 +45,8 @@ readonly Url_API = 'http://localhost:3000/api/canciones'
     const url = this.Url_API+"/"+id;
     console.log(url);
     return this.http.get<Cancion>(url).pipe(
-      tap(_ => console.log('fetched Cancion id=${id}')),
-      catchError(this.handleError<Cancion>('getCancion id=${id}'))
+      tap(_ => console.log('fetched Cancion id='+id)),
+      catchError(this.handleError<Cancion>('getCancion id='+id))
     );
   }
 

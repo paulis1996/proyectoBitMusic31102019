@@ -1,46 +1,60 @@
-import { Notificacion } from '../modelos/notificacion.module';
+import { Notificacion, TipoNotificacion } from '../modelos/notificacion.module';
+import { Router, NavigationStart } from '@angular/router';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-
+import { filter } from 'rxjs/operators';
 
 @Injectable()
-export class NotificacionesBusService {
+export class NotificacionService {
 
-  showNotificacionSource: Subject<Notificacion> = new Subject<Notificacion>();
+    private subject = new Subject<Notificacion>();
+    private mantenerRuta = false;
 
-  getNotificacion(): Observable<Notificacion> {
-    return this.showNotificacionSource.asObservable();
-  }
+    constructor(private router: Router) {
+        // clear alert messages on route change unless 'mantenerRuta' flag is true
+        this.router.events.subscribe(event => {
+            if (event instanceof NavigationStart) {
+                if (this.mantenerRuta) {
+                    // only keep for a single route change
+                    this.mantenerRuta = false;
+                } else {
+                    // clear alert messages
+                    this.clear();
+                }
+            }
+        });
+    }
 
-  showError(msg: string, summary?: string) {
-    this.show('error', summary, msg);
-  }
+    // enable subscribing to alerts observable
+    onAlert(identificacion?: string): Observable<Notificacion> {
+        return this.subject.asObservable().pipe(filter(x => x && x.identificacion === identificacion));
+    }
 
-  showSuccess(msg: string, summary?: string) {
-    this.show('success', summary, msg);
-  }
+    // convenience methods
+    success(mensaje: string, identificacion?: string) {
+        this.notificacion(new Notificacion({ mensaje, tipo: TipoNotificacion.Success, identificacion }));
+    }
 
-  showInfo(msg: string, summary?: string) {
-    this.show('info', summary, msg);
-  }
+    error(mensaje: string, identificacion?: string) {
+        this.notificacion(new Notificacion({ mensaje, tipo: TipoNotificacion.Error, identificacion }));
+    }
 
-  showWarn(msg: string, summary?: string) {
-    this.show('warn', summary, msg);
-  }
+    info(mensaje: string, identificacion?: string) {
+        this.notificacion(new Notificacion({ mensaje, tipo: TipoNotificacion.Info, identificacion }));
+    }
 
-  private show(severity: string, summary: string, msg: string) {
-    const notificacion: Notificacion = {
-      severity: severity,
-      summary: summary,
-      detail: msg
-    };
+    warn(mensaje: string, identificacion?: string) {
+        this.notificacion(new Notificacion({ mensaje, tipo: TipoNotificacion.Warning, identificacion }));
+    }
 
-    this.notify(notificacion);
+    // main alert method    
+    notificacion(notificacion: Notificacion) {
+        this.mantenerRuta = notificacion.mantenerRuta;
+        this.subject.next(notificacion);
+    }
 
-  }
-
-  private notify(notificacion: Notificacion): void {
-    this.showNotificacionSource.next(notificacion);
-  }
-
+    // clear alerts
+    clear(identificacion?: string) {
+        this.subject.next(new Notificacion({ identificacion }));
+    }
 }

@@ -1,5 +1,5 @@
 import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { NgModule, NO_ERRORS_SCHEMA } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HttpClientModule } from '@angular/common/http';
 
@@ -32,6 +32,7 @@ import {
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { ConfirmacionDialogComponent } from './confirmacion-dialog/confirmacion-dialog.component';
 import { CustomMaterialModule } from './confirmacion-dialog/custom-material.module';
+import { NotificacionModule } from './notificacion/notificacion.module';
 
 const routes: Routes = [
   {
@@ -64,10 +65,12 @@ const routes: Routes = [
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, CrearCancionComponent, ErrorComponent, 
-        ListaReproduccionComponent, DescargaComponent, InfoPerfilComponent, ActualizarCancionComponent, FormRegistroComponent,
-        FormLoginComponent, CuentaAdministradorComponent, ConsultarCancionesComponent, ConfirmacionDialogComponent],
+        ListaReproduccionComponent, DescargaComponent, InfoPerfilComponent, ActualizarCancionComponent, 
+        FormRegistroComponent,
+        FormLoginComponent, CuentaAdministradorComponent, ConsultarCancionesComponent, 
+        ConfirmacionDialogComponent],
   imports: [BrowserModule, RouterModule.forRoot(routes), ReactiveFormsModule, HttpClientModule, 
-        BrowserAnimationsModule,CustomMaterialModule,
+        BrowserAnimationsModule,CustomMaterialModule, NotificacionModule,
         MatInputModule,
         MatTableModule,
         MatPaginatorModule,
@@ -79,6 +82,7 @@ const routes: Routes = [
         MatFormFieldModule],
   providers: [],
   entryComponents: [ConfirmacionDialogComponent],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule {}

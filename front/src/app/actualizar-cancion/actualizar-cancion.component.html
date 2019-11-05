@@ -10,7 +10,7 @@
         <img src="../../assets/images/guardar.png" width="30px" height="30px" alt="">
     </div>
 
-    <form [formGroup]="cancionForm" (ngSubmit)="enviar()">
+    <form [formGroup]="cancionForm" (ngSubmit)="onFormSubmit()">
         <label for="titulo">Título:</label>
         <input formControlName="titulo" type="text" />
         <label for="duracion">Duración:</label>

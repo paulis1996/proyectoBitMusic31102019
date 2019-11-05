@@ -8,13 +8,14 @@ const multer = require('multer');
 
 // Multer File upload settings
 const DIR = 'public/';
-
+var idVideo ;
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, DIR);
   },
   filename: (req, file, cb) => {
-    const fileName = file.originalname.toLowerCase().split(' ').join('-');
+    idVideo = new Date().getTime();
+    const fileName = idVideo+'-'+file.originalname.toLowerCase().split(' ').join('-');
     cb(null, fileName)
   }
 });
@@ -47,12 +48,12 @@ router.post("/canciones", upload.single('archivo'), (req, res, next) => {
   const url = req.protocol + '://' + req.get('host')
   const cancion = new Canciones({
     //_id: new mongoose.Types.ObjectId(),
+    //_id: idVideo,
     titulo: req.body.titulo,
     duracion:  req.body.duracion,
     genero:  req.body.genero,
     artista:  req.body.artista,
-    archivo: url + '/public/' + req.file.filename
-    
+    archivo: url + '/'+DIR+ req.file.filename,
   });
 
   cancion.save().then(result => {
@@ -83,12 +84,25 @@ router.post("/canciones", upload.single('archivo'), (req, res, next) => {
 
 // DELETE
 router.delete("/canciones/:id", (req, res, next) => {
-  Canciones
-    .findByIdAndDelete({ _id: req.params.id })
-    .then((canciones) => {
-      res.send(canciones);
-    })
-    .catch(next);
+  Canciones.findById(req.params.id, (err, cancionConsultada) => {
+
+        const url = req.protocol + '://' + req.get('host')
+        const nombreArchivo = '.'+(cancionConsultada.archivo.substring(url.length));
+        console.log(nombreArchivo);
+        Canciones
+        .findByIdAndDelete({ _id: req.params.id })
+        .then((canciones) => {
+          const fs = require('fs');
+          console.log(fs.realpath);
+          fs.unlink(nombreArchivo, (err) => {
+            if (err) console.log(err);
+            console.log('Se eliminó el archivo');
+          })  
+          res.send(canciones);
+        })
+        .catch(next);
+  });
+  
 });
 
 // GET

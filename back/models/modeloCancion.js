@@ -21,7 +21,7 @@ const cancionesSchema = new Schema({
   },
   archivo: {
     type: String
-  }
+  },
 });
 
 //const canciones = mongoose.model("canciones", cancionesSchema);

@@ -1,6 +1,4 @@
 import { Component, OnInit, OnDestroy} from "@angular/core";
-import { NotificacionesBusService} from './servicios/notificacion.service'
-import { Notificacion} from './modelos/notificacion.module'
 
 
 @Component({
@@ -8,24 +6,9 @@ import { Notificacion} from './modelos/notificacion.module'
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent /*implements OnInit, OnDestroy */{
+export class AppComponent {
   title = "frontperfil";
-  constructor(/*, private notificacionesBus: NotificacionesBusService*/) { }
-  notificacionesSub : any;
-  msgs: any[];
-/*
+  constructor(){ }
   ngOnInit() {
-      this.notificacionesSub = 
-      this.notificacionesBus.getNotificacion().subscribe(
-          (notificacion: Notificacion) => {
-              this.msgs = [];
-              this.msgs.push(notificacion);
-          }
-        );
-  }
-  ngOnDestroy() {
-    if (this.notificacionesSub) {
-        this.notificacionesSub.unsubscribe();
-    }
-}*/
+  } 
 }
