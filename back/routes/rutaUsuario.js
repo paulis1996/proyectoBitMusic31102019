@@ -44,4 +44,13 @@ router.get("/usuarios", (req, res, next) => {
     res.status(200).send({ usuarios });
   });
 });
+
+// GET OBTENER USUARIO
+router.get("/usuarios/:id", (req, res, next) => {
+  usuarios
+  .findById({ _id: req.params.id })
+  .then(usuario => {
+    res.status(200).send(usuario);
+  });
+});
 module.exports = router;
