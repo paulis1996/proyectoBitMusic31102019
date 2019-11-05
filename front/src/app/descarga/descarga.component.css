@@ -1,0 +1,16 @@
+nav.lista-menu ul {
+  list-style: none;
+}
+
+.botonPerfil {
+  text-align: center;
+  border: none;
+  color: white;
+ }
+ .menu{
+  display: grid;
+  justify-content:center;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+ }
