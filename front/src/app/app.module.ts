@@ -18,6 +18,7 @@ import { HomeComponent } from './home/home.component';
 import { ErrorComponent } from './error/error.component';
 import { ConsultarCancionesComponent } from './consultar-canciones/consultar-canciones.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AdminGuard } from './guards/admin.guard';
 
 import {
   MatInputModule,
@@ -38,28 +39,50 @@ const routes: Routes = [
   {
     path: "",
     pathMatch: "full",
-    redirectTo: "/Inicio"
+    redirectTo: "/inicio"
   },
   {
-    path: "Inicio",
+    path: "inicio",
     component: HomeComponent
-  },/* 
+  },
+  {
+    path: "home",
+    component: HomeComponent
+  },
+  {
+    path: "info-perfil",
+    component: InfoPerfilComponent,
+    canActivate: [CanActivateViaAuthGuard]
+  },
+  {
+    path: "info-perfil/:id",
+    component: InfoPerfilComponent,
+    canActivate: [CanActivateViaAuthGuard]
+  },
+  {
+    path: "crear-cancion",
+    component: CrearCancionComponent,
+    canActivate: [CanActivateViaAuthGuard]
+  },
+  {
+    path: "form-registro",
+    component: FormRegistroComponent
+  },
+  { path: "login", component: FormLoginComponent },
   {
     path: "descarga",
-    component: DescargaComponent
-  },
-  { path: "reproduccion", component: ListaReproduccionComponent }, */
-  {
-    path: "CrearCancion", component: CrearCancionComponent
+    component: DescargaComponent,
+    canActivate: [CanActivateViaAuthGuard]
   },
   {
-    path: "ConsultarCanciones", component: ConsultarCancionesComponent
+    path: "editar-cancion",
+    component: ActualizarCancionComponent,
+    canActivate: [CanActivateViaAuthGuard]
   },
   {
-    path: "ActualizarCancion/:id", component: ActualizarCancionComponent
-  },
-  {
-    path: "**", component: ErrorComponent
+    path: "cuenta-administrador",
+    component: CuentaAdministradorComponent,
+    canActivate: [CanActivateViaAuthGuard, AdminGuard]
   }
 ];
 
@@ -80,7 +103,7 @@ const routes: Routes = [
         MatButtonModule,MatMenuModule,
         MatCardModule,ScrollingModule,
         MatFormFieldModule],
-  providers: [],
+  providers: [CanActivateViaAuthGuard, AdminGuard],
   entryComponents: [ConfirmacionDialogComponent],
   bootstrap: [AppComponent],
   schemas: [NO_ERRORS_SCHEMA]
