@@ -1,35 +1,55 @@
 <link href="https://fonts.googleapis.com/css?family=Great+Vibes|ZCOOL+XiaoWei&display=swap" rel="stylesheet">
 <div class="informacionPerfil">
-    <div class="tituloInformacion"> <b>INFORMACION DEL USUARIO</b> </div>
-    <div class="infousuario">
-        <div class="info">
-            <div><label for="">NOMBRE: </label></div>
-            <div><label for="">EDAD: </label></div>
-            <div><label for="">CORREO: </label></div>
-            <div><label for="">PASSWORD: </label></div>
-            <div><label for="">ROLE: </label></div>
-        </div>
-
-        <div class="inputs">
-            <div><input class="inputPerfil" type="text" size="50px"></div>
-            <div><input class="inputPerfil" type="text" size="50px"></div>
-            <div><input class="inputPerfil" type="text" size="50px"></div>
-            <div><input class="inputPerfil" type="text" size="50px"></div>
-            <div><input class="inputPerfil" type="text" size="50px"></div>
-        </div>
+  <div class="tituloInformacion">
+    <b>INFORMACIÓN DEL USUARIO</b>
+  </div>
+  <div class="infousuario">
+    <div class="info">
+      <div>
+        <label for="">NOMBRE:
+        </label>
+      </div>
+      <div>
+        <label for="">EDAD:
+        </label>
+      </div>
+      <div>
+        <label for="">CORREO:
+        </label>
+      </div>
+      <div>
+        <label for="">PASSWORD:
+        </label>
+      </div>
+      <div>
+        <label for="">ROLE:
+        </label>
+      </div>
     </div>
-    <div class="botones">
 
-        <div></div>
-        <div>
-            <button>ACTUALIZAR</button>
-        </div>
-
+    <div class="inputs">
+      <div><input class="inputPerfil" type="text" size="50px" [(ngModel)]="usuario.nombre"></div>
+      <div><input class="inputPerfil" type="text" size="50px" [(ngModel)]="usuario.edad"></div>
+      <div><input class="inputPerfil" type="text" size="50px" [(ngModel)]="usuario.correo"></div>
+      <div><input class="inputPerfil" type="password" size="50px" (ngModel)="usuario.password"></div>
+      <div>
+        <select class="inputPerfil" [disabled]="usuarioLogueado.role !== 'Admin' || usuario._id === usuarioLogueado._id" [(ngModel)]="usuario.role">
+          <option>Regular</option>
+          <option>Admin</option>
+        </select>
+      </div>
     </div>
+  </div>
+  <div class="botones">
+
+    <div></div>
     <div>
-        <a href="perfil.html">INFORMACION USUARIO</a>
-        <br>
-        <a href="index.html">CERRAR SESION</a>
+      <button (click)="actualizarUsuario()">ACTUALIZAR</button>
     </div>
+
+  </div>
+  <div>
+    <a routerLink="/descarga">Volver</a>
+  </div>
 
 </div>
