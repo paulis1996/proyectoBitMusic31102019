@@ -1,12 +1,31 @@
-<link href="https://fonts.googleapis.com/css?family=Great+Vibes|ZCOOL+XiaoWei&display=swap" rel="stylesheet">
-<div class="INICIARSESION">
-    <div class="tituloIniciar"> <b>INICIAR SESION</b> </div>
+<link
+  href="https://fonts.googleapis.com/css?family=Great+Vibes|ZCOOL+XiaoWei&display=swap"
+  rel="stylesheet"
+/>
+<form class="iniciarsesion" #f="ngForm" (ngSubmit)="login(f.value)">
+  <div class="tituloIniciar"><b>INICIAR SESIÓN</b></div>
+  <div>
     <div>
-        <div><input class="inputIniciar" type="text" placeholder="CORREO ELECTRONICO"></div>
-        <div><input class="inputIniciar" type="text" placeholder="CONTRASEÑA"></div>
-
+      <input
+        ngModel
+        class="inputIniciar"
+        type="text"
+        placeholder="CORREO ELECTRONICO"
+        name="email"
+      />
     </div>
     <div>
-        <button class="botonIniciar">INICIAR</button>
+      <input
+        ngModel
+        class="inputIniciar"
+        type="password"
+        placeholder="CONTRASEÑA"
+        name="pw"
+      />
     </div>
-</div>
+  </div>
+  <div>
+    <button type="submit" class="botonIniciar">INICIAR</button>
+    <button routerLink="/" class="botonIniciar">Volver</button>
+  </div>
+</form>
