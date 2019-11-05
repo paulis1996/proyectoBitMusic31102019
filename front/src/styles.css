@@ -8,8 +8,10 @@
   grid-template-columns: 1fr 3fr 1fr;
   justify-items: center;
   align-items: center;
-  padding: 5px;
+  padding: 10px;
+  margin: 10px;
   border-radius: 10px;
+  gap: 10px;
 }
 .MisCanciones {
   padding: 10px;
@@ -123,8 +125,10 @@ audio {
   justify-content: space-evenly;
 }
 .perfil {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 5px;
+  
 }
 
 .informacionPerfil {
@@ -170,9 +174,7 @@ button {
   border: solid 1px white;
   border-radius: 5px;
 }
-button:hover {
-  background: #f123a9;
-}
+
 
 .contenedorCrear {
   background: #f0a0d4;
@@ -234,6 +236,8 @@ button:hover {
   border-radius: 10px;
   text-align: center;
   width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .tituloIniciar {
@@ -270,6 +274,8 @@ button:hover {
   border-radius: 10px;
   text-align: center;
   width: 50%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .inputRegistro {
@@ -290,9 +296,8 @@ button:hover {
   background: #f123a9;
 }
 .eliminarEditar {
-  /* display: flex;*/
+  display: flex;
   justify-content: space-between;
-  vertical-align: center;
 }
 
 .contenedorListadoUsuarios {
@@ -347,28 +352,141 @@ button:hover {
   }
 }
 
-@media all and (max-width: 300px) {
-  .cancionesDescargadas {
-    grid-template-areas:
-      "div div div"
-      "div div div";
-  }
-}
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-
-.loading-shade {
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 56px;
-  right: 0;
-  background: rgba(0, 0, 0, 0.15);
-  z-index: 1;
+#slider {
+  width: 100%;
+  margin: 5px auto;
+  overflow: hidden;
   display: flex;
   align-items: center;
+  
+}
+
+.imagenHome {
+  width: auto;
+  height: auto;
+}
+
+#slider ul {
+  padding: 0;
+  display: flex;
+  width: 1500px;
+
+  animation: cambio 15s infinite;
+}
+#slider li {
+  list-style: none;
+  width: 100%;
+}
+
+@keyframes cambio {
+  0% {
+    margin-left: 0;
+  } /* 4 segundos primera imagen 1 segundo camboi de imagen */
+  20% {
+    margin-left: 0;
+  }
+
+  25% {
+    margin-left: -100%;
+  }
+  45% {
+    margin-left: -100%;
+  }
+
+  50% {
+    margin-left: -200%;
+  }
+  70% {
+    margin-left: -200%;
+  }
+}
+.texto-encima {
+  font-size: 30px;
+  text-align: left;
+  color: white;
+  padding: 50px;
+  position: absolute;
+}
+.youtube {
+  background-color: transparent;
+  border-radius: 25px;
+  border: solid white;
+  text-align: center;
+  padding: 10px 30px;
+  font-size: 12px;
+  margin: 0px;
+}
+.youtube:hover {
+  background: #f123a9;
+}
+.botonyoutube {
+  text-decoration: none;
+  color: white;
+}
+
+.titulo1 {
+  font-size: 45px;
+  margin: 0px;
+}
+.titulo2 {
+  margin: 0px;
+}
+.titulo3 {
+  font-size: 20px;
+  margin: 0px;
+}
+
+.padre {
+  padding: 50px;
+}
+
+.informacionAdministrador {
+  padding: 10px;
+  background: #f0a0d4;
+  font-family: "ZCOOL XiaoWei", serif;
+  display: grid;
+  grid-template-rows: 1fr 3fr 1fr;
+  text-align: center;
+  border-radius: 20px;
+}
+.infoAdministrador {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+.inputAdministrador {
+  border-radius: 25px;
+  background: none;
+  border: solid 2px white;
+}
+
+.botonPerfil {
+
+  text-align: center;
+  border: none;
+  color: white;
+}
+.menu{
+  display: grid;
+  justify-content:center;
+  text-align: center;
+  color: white;
+  font-size: 15px;
+}
+
+
+.footer{
+  padding: 10px;
+  border-radius: 10px;
+  background: rgba(128, 128, 128, 0.151);
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+}
+
+.redes{
+  display: flex;
   justify-content: center;
+  align-content: center;
+  justify-content: space-evenly;
+
 }
 
